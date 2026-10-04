@@ -4,7 +4,7 @@ const totalAmountDisplay = document.getElementById('total-amount');
 
 let totalAmount = 0;
 
-addExpenseButton.addEventListener('click', function() {
+function addExpense() {
     const expenseName = document.getElementById('expense-name').value;
     const expenseAmount = parseFloat(document.getElementById('expense-amount').value);
     const expenseCategory = document.getElementById('expense-category').value;
@@ -24,4 +24,15 @@ addExpenseButton.addEventListener('click', function() {
     } else {
         alert('Please enter valid expense details.');
     }
+}
+
+addExpenseButton.addEventListener('click', addExpense);
+
+// Allow users to add an expense by pressing Enter
+document.querySelectorAll('input').forEach(input => {
+    input.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            addExpense();
+        }
+    });
 });
